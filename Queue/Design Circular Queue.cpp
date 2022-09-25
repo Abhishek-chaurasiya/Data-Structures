@@ -52,3 +52,5 @@ public:
  * bool param_5 = obj->isEmpty();
  * bool param_6 = obj->isFull();
  */
+Time Complexity: O(1)
+Space Complexity: O(n), where n is the size of the queue
