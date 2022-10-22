@@ -52,3 +52,31 @@ Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from
 
 
 //Second code-----------------------------------------------------------------------------------------------------------------------------------------------
+
+ string minWindow(string s, string t) {
+     
+        int ans=INT_MAX,start=0;
+        unordered_map<char,int> freCnt;
+        for(auto & x:t)freCnt[x]++;
+        int cnt=freCnt.size();
+        
+        int i=0,j=0;
+        while(j<s.size()){
+            freCnt[s[j]]--;
+            if(freCnt[s[j]]==0)cnt--;
+            
+            while(cnt==0){
+                if(j-i+1<ans){
+                    ans=j-i+1;
+                    start=i;
+                }
+                freCnt[s[i]]++;
+                if(freCnt[s[i]]>0)cnt++;
+                
+                i++;
+            }
+            j++;
+        }
+        if(ans==INT_MAX)return "";
+        return s.substr(start,ans);
+    }
