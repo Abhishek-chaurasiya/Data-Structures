@@ -26,4 +26,35 @@ void solve(){
 /////////////////////////////////////////////////////////////////////////WITH QUERIES////////////////////////////////////////////////////////////////////////////
 There are Q queries for the target , if target exist print the solution .
   
-  
+learning : dp(level,sumleft) helps us to cache the dp array without refreshing it.
+
+    int n;
+int dp[101][101];
+int helper(int idx,int sumleft,vector<int> &a){
+    if(sumleft == 0)return 1;
+    if(idx == (int) a.size()){
+       if(sumleft == 0)return 1;
+       return 0;
+    }
+    if(dp[idx][sumleft] != -1)return dp[idx][sumleft];
+    int op1 = 0 , op2 = 0;
+    op1 = helper(idx+1,sumleft,a);
+    if(sumleft - a[idx] >= 0) {
+        op2 = helper(idx+1,sumleft-a[idx],a);
+     
+    }
+
+    return dp[idx][sumleft] = (op1||op2);
+}
+
+void printset(int idx,int sumleft,vi a,vector<int> &ans){
+    cout<< idx <<" "<< sumleft<<endl;
+    if(idx == n)return ;
+
+    if(helper(idx+1,sumleft,a))printset(idx+1,sumleft,a,ans);
+    else if(helper(idx+1,sumleft-a[idx],a)){
+         ans.pb(a[idx]);
+         cout<<"took"<<a[idx]<<" ";
+         printset(idx+1,sumleft-a[idx],a,ans);
+    }
+}
