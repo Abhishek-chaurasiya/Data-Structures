@@ -49,7 +49,42 @@ Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from
         string ans=s.substr(start,end-start+1);
         return ans;
     }
-
+/// second time done .......................................................................................................................
+class Solution {
+public:
+    bool isvalid(unordered_map<int,int> &fre,unordered_map<int,int>&check){
+        
+        for(auto &x:check){
+            if(fre[x.first] < x.second)return false;
+        }
+        return true;
+    }
+    string minWindow(string s, string t) {
+        
+        int i = 0;
+        unordered_map<int,int> check , fre;
+        for(auto &c:t)check[c]++;
+        int ans = INT_MAX;
+        pair<int,int> idx;
+        
+        for(int j=0;j<s.size();j++){
+            fre[s[j]]++;
+            while(isvalid(fre,check)){
+                if(j-i+1<ans){
+                    idx={i,j};
+                    ans = j-i+1;
+                }
+                fre[s[i]]--;
+                i++;
+            }
+        }
+        if(ans == INT_MAX)return "";
+        string res = s.substr(idx.first,idx.second - idx.first + 1);
+        
+        return res;
+        
+    }
+};
 
 //Second code-----------------------------------------------------------------------------------------------------------------------------------------------
 
