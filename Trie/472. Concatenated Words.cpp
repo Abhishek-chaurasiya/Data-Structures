@@ -26,3 +26,49 @@ public:
         return ans;
     }
 };
+
+
+// aproach 2 - trie + dp ------------------------------------------------------------------------------------------------------------------------------------
+struct TrieNode {
+    TrieNode *next[26] = {};
+    bool end = false;
+};
+class Solution {
+    TrieNode *root = new TrieNode();
+    void add(TrieNode *node,string &s){
+        
+        for(auto &c:s){
+           if(!node->next[c-'a']) node->next[c-'a'] = new TrieNode();
+            node = node->next[c-'a'];
+        }
+        node->end = true;
+    }
+    bool valid(string &s){
+        int n = s.size();
+        vector<bool> dp(n+1,false);
+        dp[0] = 1;
+        for(int i=0;i<n && !dp[n];i++){
+            if(!dp[i])continue;
+            TrieNode *node = root;
+            for(int j=i;j<n-(i==0);j++){
+                node = node->next[s[j]-'a'];
+                if(!node)break;
+                if(node->end)dp[j+1] = true;
+            }
+        }
+        return dp[n];
+    }
+public:
+    vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
+        
+        for(auto &word:words){
+            if(word.size())add(root,word);
+        }
+        vector<string> ans;
+        for(auto &word:words){
+            if(word.size() && valid(word))ans.push_back(word);
+        }
+        
+        return ans;
+    }
+};
