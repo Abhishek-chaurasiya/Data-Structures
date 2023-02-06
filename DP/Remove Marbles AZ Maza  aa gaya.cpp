@@ -12,6 +12,10 @@ Output Format
 
 Print the maximum points you can get in a new line.
 
+dp(l,r,k) is the maximum profit we can get from (l,r) ,first element appearing k extra time  
+ex---- [3 2 2 2 3 4 3] --- max profit === 19
+	
+
 1 ≤ N ≤ 100
 0 ≤ Ai ≤ 100
 Sample Input 1
