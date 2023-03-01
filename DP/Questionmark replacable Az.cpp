@@ -21,6 +21,5 @@ int helper(int idx,int unclosed,int n,string &s){
     ans+=helper(idx+1,unclosed+1,n,s);
     ans+=helper(idx+1,unclosed-1,n,s); 
   }
-
   return dp[idx][unclosed]=ans;
 }
