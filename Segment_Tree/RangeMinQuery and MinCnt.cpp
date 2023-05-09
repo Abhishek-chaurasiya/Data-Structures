@@ -1,3 +1,8 @@
+// There are two type of query 
+   1. UPDATE x th posistion with v values
+   2. (l r) find minimum in l to r and also count of minimum element 
+
+
 vi arr(100100);
 struct node
 {
