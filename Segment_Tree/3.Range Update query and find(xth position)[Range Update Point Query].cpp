@@ -2,7 +2,7 @@
    1. Update (l,r,v) range l to r with plus v
    2. Find x the position 
    
-Interchange the implementation of query and update part in the segment tree. For each query of the 2nd type, the value at index i will be the sum of values from root to the leaf node representing that index. For the update query of the 1st type, add the value to each logN nodes that completely lies within that range.
+Interchange the implementation of query and update part in the segment tree. For each query of the 2nd type, the value at index i will be the sum of values from root to the leaf node representing that index. For the update query of the 1st type, add the value to each logN nodes that completely lies within that range .
      
      
 vi arr(100100);
