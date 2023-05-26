@@ -66,3 +66,4 @@ which will be nothing nc2(cnt of 1 bit) ans += ocnt*(ocnt-1)/2*base
 can also extend to | or as well
 which will be nothing but nc2(cnt of 1 bit) + 0 bitcnt*1 bitcnt [(ocnt*(ocnt-1)/2 + ocnt*zcnt)*base]
 
+
