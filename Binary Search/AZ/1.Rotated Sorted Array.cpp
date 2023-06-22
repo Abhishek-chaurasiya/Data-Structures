@@ -1,4 +1,4 @@
-////////////////////////////////////////////////NEVER THOUGHT THIS WAY///////////////////////////////////////////////////////////////////////
+1////////////////////////////////////////////////NEVER THOUGHT THIS WAY///////////////////////////////////////////////////////////////////////
 1. WHAT WE ACTUALLY HAVE TO FIND ? Initially array was sorted it is rotated then there would be a point in the array where element is smaller then the element before it,
    A[i-1] > A[i].
 2. We call this point inflection point . The fact is that all the numbers to the left of the inflection point are greater then the first number and numbers right to point
