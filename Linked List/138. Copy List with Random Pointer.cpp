@@ -43,4 +43,33 @@ public:
 };
 
 O(1) - space
-  
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        auto p = head;
+        while(p){
+            auto node = p;
+            p = p->next;
+            auto copy = new Node(node->val);
+            node->next = copy;
+            copy->next = p;
+        }
+        p = head;
+        while(p){
+            if(p->random)p->next->random = p->random->next;
+            p = p->next->next;
+        }
+        Node h(0), *dummy = &h;
+        p = head;
+        while(p){
+            auto node = p->next;
+            p->next = node->next;
+            p = p->next;
+            
+            dummy->next = node;
+            dummy = dummy->next;
+        }
+        
+        return h.next;
+    }
+};
